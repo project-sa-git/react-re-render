@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { ChildArea } from "./childArea";
 
 export default function App() {
@@ -16,6 +16,11 @@ export default function App() {
 
   //　「useCallback」関数側のmemo化
   const onClickClose = useCallback(() => setOpen(false), [setOpen])
+
+  // 「useMemo」変数のメモ化（複雑になった時用）
+  // 第二引数の[]は最初に読み込まれた時のみレンダリングにする記載
+  const temp = useMemo(() => 1 + 3, []);
+  console.log(temp);
 
   return (
     <>
